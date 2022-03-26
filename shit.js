@@ -11,7 +11,8 @@ let circles = []
 let particles = []
 let circleAmount = 30
 let score = 0
-let time = 60
+let defaultTime = 10
+let time = defaultTime
 let ingame = true
 let t
 
@@ -33,6 +34,9 @@ document.onkeydown = function (e) {
         ingame = !ingame
         console.log("space")
         if (ingame){
+            if (time == 0){
+                time = defaultTime
+            }
             t = setInterval(() => time--,1000);
             animate()
         } else {
@@ -133,9 +137,9 @@ function animate() {
 
         requestAnimationFrame(animate);
         if (time == 0){
-            reset()
             ingame = false
-            time = 60
+            clearInterval(t)
+            //time = 60
             score = 0
         }
     }
