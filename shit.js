@@ -5,13 +5,13 @@ let elemLeft = canvas.offsetLeft + canvas.clientLeft,
     elemTop = canvas.offsetTop + canvas.clientTop
 
 let indices = 0
-let difficulty = 4
+let difficulty = 3
 
 let circles = []
 let particles = []
-let circleAmount = 30
+let circleAmount = 20
 let score = 0
-let defaultTime = 60
+let defaultTime = 30
 let time = defaultTime
 let ingame = true
 let t
@@ -58,7 +58,7 @@ canvas.addEventListener('click', function(event) {
         let cY = c.y
         if (Math.abs(x - cX) < c.radius && Math.abs(y - cY) < c.radius){
             circles.splice(i, 1)
-            circles.push(new Circle(0, Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 100)))
+            circles.push(new Circle(0, Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 90)+10))
             score++
 
             particles.push(new Particle(c.x, c.y, c.radius, c.color))
@@ -162,7 +162,7 @@ function spawnNewCircles() {
         let circle = circles[i]
         if (circle.x > canvas.width){
             circles.splice(i, 1)
-            circles.push(new Circle(0, Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 100)))
+            circles.push(new Circle(0, Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 90)+10))
         }
     }
 }
@@ -182,7 +182,7 @@ function draw(){
 
 function init(){
     for (let i = 0; i < circleAmount; i++) {
-        circles.push(new Circle(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 100)))
+        circles.push(new Circle(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), Math.floor(Math.random() * 90)+10))
     }
     t = setInterval(() => time--,1000);
 }
