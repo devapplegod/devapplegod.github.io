@@ -11,7 +11,7 @@ let circles = []
 let particles = []
 let circleAmount = 30
 let score = 0
-let defaultTime = 10
+let defaultTime = 60
 let time = defaultTime
 let ingame = true
 let t
