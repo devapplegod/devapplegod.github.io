@@ -2,7 +2,7 @@ let canvas = document.getElementById("canvas")
 let ctx = canvas.getContext("2d")
 
 let backgroundDarkness = 30
-let ballCount = 200
+let ballCount = 300
 let balls = []
 
 let blackOnWhite = false
@@ -26,7 +26,7 @@ canvas.addEventListener("mousemove", function (event) {
     mousePos = getMousePos(canvas, event);
 })
 
-var scrollableElement = document.body; //document.getElementById('scrollableElement');
+let scrollableElement = document.body; //document.getElementById('scrollableElement');
 
 scrollableElement.addEventListener('wheel', checkScrollDirection);
 
@@ -60,6 +60,9 @@ function init() {
 }
 
 function gameLoop() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     resetCanvas()
     updateAndDrawBalls()
@@ -99,7 +102,7 @@ function resetCanvas() {
 
 function updateAndDrawBalls() {
     for (let i = 0; i < balls.length; i++) {
-        balls[i].updateAndDraw()
+        balls[i].updatePosition()
     }
 }
 
